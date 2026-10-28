@@ -1,0 +1,278 @@
+{
+  "questions": {
+    "Q1": {
+      "text": "Jakiego gatunku dotyczy problem?",
+      "answers": ["dog", "cat", "rabbit", "hamster", "parrot", "turtle"]
+    },
+    "Q2": {
+      "text": "Jaki jest główny objaw zaobserwowany u zwierzęcia?",
+      "answers": ["vomiting", "diarrhea", "scratching", "limping", "sneezing", "no_appetite", "shell_softening", "feather_plucking", "overgrown_teeth", "wet_tail"]
+    },
+    "Q3": {
+      "text": "Jak długo utrzymują się objawy?",
+      "answers": ["under_24h", "1_3_days", "over_3_days"]
+    },
+    "Q4": {
+      "text": "Czy zwierzę jest apatyczne lub osowiałe?",
+      "answers": ["true", "false"]
+    },
+    "Q5": {
+      "text": "Czy u zwierzęcia występuje podwyższona temperatura lub gorączka?",
+      "answers": ["true", "false", "unknown"]
+    },
+    "Q6": {
+      "text": "Czy w ostatnim czasie nastąpiła zmiana diety lub zjedzenie czegoś nietypowego?",
+      "answers": ["true", "false"]
+    },
+    "Q7": {
+      "text": "W jakim wieku jest zwierzę?",
+      "answers": ["young", "adult", "senior"]
+    },
+    "Q8": {
+      "text": "Czy zwierzę ma kontakt z innymi zwierzętami lub wychodzi na zewnątrz?",
+      "answers": ["true", "false"]
+    },
+    "Q9": {
+      "text": "Czy zwierzę pije wodę w normalnych ilościach?",
+      "answers": ["normal", "increased", "decreased"]
+    },
+    "Q10": {
+      "text": "Czy zwierzę ma aktualne szczepienia i odrobaczanie?",
+      "answers": ["true", "false"]
+    },
+    "Q11": {
+      "text": "Czy na ciele zwierzęcia widać rany, obrzęki lub pasożyty?",
+      "answers": ["wounds", "swelling", "parasites", "none"]
+    },
+    "Q12": {
+      "text": "W jakich warunkach środowiskowych przebywa zwierzę?",
+      "answers": ["indoor_optimal", "cold_drafty", "no_uvb_light", "small_cage"]
+    }
+  },
+  "rules": [
+    {
+      "if": {"Q1": "dog", "Q2": "vomiting", "Q3": "under_24h", "Q4": "false", "Q6": "true"},
+      "then": {
+        "diagnosis": "Łagodne zatrucie pokarmowe lub niestrawność",
+        "action": "Zastosuj 12-godzinną głodówkę, zapewnij stały dostęp do świeżej wody i obserwuj psa"
+      }
+    },
+    {
+      "if": {"Q1": "dog", "Q2": "diarrhea", "Q4": "true", "Q7": "young", "Q10": "false"},
+      "then": {
+        "diagnosis": "Podejrzenie parwowirozy",
+        "action": "Natychmiast skonsultuj się z weterynarzem – stan bezpośredniego zagrożenia życia"
+      }
+    },
+    {
+      "if": {"Q1": "dog", "Q2": "scratching", "Q8": "true", "Q11": "parasites"},
+      "then": {
+        "diagnosis": "Inwazja pcheł lub kleszczy",
+        "action": "Zastosuj preparat typu spot-on lub tabletkę przeciw pasożytom zewnętrznym oraz wypierz legowisko"
+      }
+    },
+    {
+      "if": {"Q1": "dog", "Q2": "scratching", "Q3": "over_3_days", "Q6": "true", "Q11": "none"},
+      "then": {
+        "diagnosis": "Alergia pokarmowa",
+        "action": "Wycofaj nowy pokarm i wprowadź dietę eliminacyjną po konsultacji z weterynarzem"
+      }
+    },
+    {
+      "if": {"Q1": "dog", "Q2": "limping", "Q7": "senior", "Q3": "over_3_days", "Q11": "swelling"},
+      "then": {
+        "diagnosis": "Zwyrodnienie stawów (artroza)",
+        "action": "Ogranicz intensywny ruch, wykonaj RTG u weterynarza i włącz suplementację chondroprotetykami"
+      }
+    },
+    {
+      "if": {"Q1": "dog", "Q2": "limping", "Q3": "under_24h", "Q8": "true", "Q11": "wounds"},
+      "then": {
+        "diagnosis": "Skaleczenie opuszki łapy lub ciało obce",
+        "action": "Przemyj ranę środkiem odkażającym dla zwierząt, zabezpiecz łapę i udaj się do weterynarza"
+      }
+    },
+    {
+      "if": {"Q1": "dog", "Q2": "sneezing", "Q5": "true", "Q8": "true", "Q10": "false"},
+      "then": {
+        "diagnosis": "Kaszel kenelowy lub infekcja górnych dróg oddechowych",
+        "action": "Odizoluj psa od innych zwierząt i udaj się do weterynarza w celu wdrożenia leczenia"
+      }
+    },
+    {
+      "if": {"Q1": "dog", "Q2": "no_appetite", "Q4": "true", "Q5": "true", "Q8": "true", "Q11": "parasites"},
+      "then": {
+        "diagnosis": "Podejrzenie choroby odkleszczowej (babeszjoza)",
+        "action": "Pilna wizyta u weterynarza w celu wykonania badania krwi i podania leków pierwotniakobójczych"
+      }
+    },
+    {
+      "if": {"Q1": "dog", "Q2": "vomiting", "Q4": "true", "Q7": "senior", "Q9": "increased"},
+      "then": {
+        "diagnosis": "Podejrzenie niewydolności nerek lub ropomacicza",
+        "action": "Wykonaj pilne badania krwi (profil nerkowy, morfologia) oraz USG jamy brzusznej"
+      }
+    },
+    {
+      "if": {"Q1": "cat", "Q2": "vomiting", "Q3": "under_24h", "Q4": "false", "Q6": "false"},
+      "then": {
+        "diagnosis": "Zakłaczenie przewodu pokarmowego (pilobezoary)",
+        "action": "Podaj kotu pastę odkłaczającą i regularnie wyczesuj sierść"
+      }
+    },
+    {
+      "if": {"Q1": "cat", "Q2": "no_appetite", "Q3": "over_3_days", "Q4": "true", "Q9": "increased", "Q7": "senior"},
+      "then": {
+        "diagnosis": "Przewlekła niewydolność nerek lub cukrzyca",
+        "action": "Udaj się do weterynarza na badanie krwi (mocznik, kreatynina, glukoza) oraz badanie moczu"
+      }
+    },
+    {
+      "if": {"Q1": "cat", "Q2": "sneezing", "Q4": "true", "Q5": "true", "Q10": "false"},
+      "then": {
+        "diagnosis": "Koci katar (herpeswiroza lub kaliciwiroza)",
+        "action": "Wizyta u weterynarza w celu podania antybiotyku i leków podnoszących odporność"
+      }
+    },
+    {
+      "if": {"Q1": "cat", "Q2": "scratching", "Q8": "true", "Q11": "wounds"},
+      "then": {
+        "diagnosis": "Ropień po walce z innym kotem lub alergiczne pchle zapalenie skóry",
+        "action": "Oczyść ranę i skonsultuj się z weterynarzem w celu ewakuacji ropnia i podania antybiotyku"
+      }
+    },
+    {
+      "if": {"Q1": "cat", "Q2": "diarrhea", "Q3": "1_3_days", "Q6": "false", "Q10": "false"},
+      "then": {
+        "diagnosis": "Zarażenie pasożytami wewnętrznymi (robaczyca lub lamblioza)",
+        "action": "Zbierz próbkę kału do badania parazytologicznego i podaj odpowiedni środek odrobaczający"
+      }
+    },
+    {
+      "if": {"Q1": "cat", "Q2": "limping", "Q4": "true", "Q5": "true", "Q8": "true", "Q11": "swelling"},
+      "then": {
+        "diagnosis": "Uraz mechaniczny lub zakażona rana kąsana kończyny",
+        "action": "Udaj się do weterynarza na badanie kliniczne, RTG kończyny i antybiotykoterapię"
+      }
+    },
+    {
+      "if": {"Q1": "cat", "Q2": "no_appetite", "Q3": "1_3_days", "Q4": "true", "Q9": "decreased"},
+      "then": {
+        "diagnosis": "Ryzyko stłuszczenia wątroby z powodu głodówki",
+        "action": "Pilna konsultacja weterynaryjna i wdrożenie płynoterapii oraz dokarmiania wspomaganego"
+      }
+    },
+    {
+      "if": {"Q1": "rabbit", "Q2": "no_appetite", "Q3": "under_24h", "Q4": "true", "Q9": "decreased"},
+      "then": {
+        "diagnosis": "Zatrzymanie akcji przewodu pokarmowego (zator / wzdęcie)",
+        "action": "Natychmiastowa wizyta u weterynarza specjalistycznego – stan zagrażający życiu królika"
+      }
+    },
+    {
+      "if": {"Q1": "rabbit", "Q2": "overgrown_teeth", "Q3": "over_3_days", "Q6": "false"},
+      "then": {
+        "diagnosis": "Wada zgryzu i przerost siekaczy lub zębów policzkowych",
+        "action": "Wizyta u weterynarza w celu korekcji zębów oraz zwiększenie ilości siana w diecie"
+      }
+    },
+    {
+      "if": {"Q1": "rabbit", "Q2": "sneezing", "Q3": "over_3_days", "Q12": "cold_drafty"},
+      "then": {
+        "diagnosis": "Pastereloza lub infekcja dróg oddechowych wywołana przeciągiem",
+        "action": "Przenieś królika w ciepłe miejsce bez przeciągów i skonsultuj się z weterynarzem"
+      }
+    },
+    {
+      "if": {"Q1": "rabbit", "Q2": "diarrhea", "Q6": "true", "Q7": "young"},
+      "then": {
+        "diagnosis": "Kokcydioza lub dysbioza jelitowa po błędach żywieniowych",
+        "action": "Odstaw świeże warzywa i owoce, pozostaw wyłącznie siano i wodę, pilnie zbadasz kał u weterynarza"
+      }
+    },
+    {
+      "if": {"Q1": "rabbit", "Q2": "limping", "Q11": "wounds", "Q12": "small_cage"},
+      "then": {
+        "diagnosis": "Pododermatitis (odgniecenia i wrzody skoków)",
+        "action": "Zmień podłoże w klatce na miękkie, zwiększ przestrzeń życiową i zastosuj maści gojące od weterynarza"
+      }
+    },
+    {
+      "if": {"Q1": "hamster", "Q2": "wet_tail", "Q4": "true", "Q7": "young"},
+      "then": {
+        "diagnosis": "Choroba mokrego ogona (proliferacyjne zapalenie jelit)",
+        "action": "Natychmiastowa wizyta u weterynarza (wymagany antybiotyk i nawadnianie) oraz dokładna dezynfekcja klatki"
+      }
+    },
+    {
+      "if": {"Q1": "hamster", "Q2": "overgrown_teeth", "Q2": "no_appetite", "Q9": "decreased"},
+      "then": {
+        "diagnosis": "Przerost siekaczy uniemożliwiający pobieranie pokarmu",
+        "action": "Przycięcie zębów u weterynarza i zapewnienie twardych gryzaków oraz gałązek drzew owocowych"
+      }
+    },
+    {
+      "if": {"Q1": "hamster", "Q2": "scratching", "Q11": "parasites", "Q12": "small_cage"},
+      "then": {
+        "diagnosis": "Świerzbowiec lub nużyca",
+        "action": "Zastosuj leczenie przeciwpasożytnicze u weterynarza i wymień całą ściółkę w klatce"
+      }
+    },
+    {
+      "if": {"Q1": "hamster", "Q2": "sneezing", "Q4": "true", "Q12": "cold_drafty"},
+      "then": {
+        "diagnosis": "Zapalenie płuc lub przeziębienie",
+        "action": "Zapewnij spokój i ciepło w klatce oraz udaj się do weterynarza zwierząt egzotycznych"
+      }
+    },
+    {
+      "if": {"Q1": "parrot", "Q2": "feather_plucking", "Q8": "false", "Q12": "small_cage"},
+      "then": {
+        "diagnosis": "Autoagresja psychogenna (stres, nuda, samotność)",
+        "action": "Zwiększ klatkę, zapewnij zabawki do żerowania i poświęcaj ptakowi więcej uwagi"
+      }
+    },
+    {
+      "if": {"Q1": "parrot", "Q2": "feather_plucking", "Q3": "over_3_days", "Q11": "parasites"},
+      "then": {
+        "diagnosis": "Inwazja piórojadów lub roztoczy (np. ptaszyniec)",
+        "action": "Zastosuj preparat przeciwpasożytniczy bezpieczny dla ptaków i wyparz wyposażenie klatki"
+      }
+    },
+    {
+      "if": {"Q1": "parrot", "Q2": "sneezing", "Q4": "true", "Q9": "decreased", "Q12": "cold_drafty"},
+      "then": {
+        "diagnosis": "Infekcja dróg oddechowych lub aspergiloza",
+        "action": "Umieść papugę w ciepłym pomieszczeniu i pilnie skonsultuj z weterynarzem awiopatologiem"
+      }
+    },
+    {
+      "if": {"Q1": "parrot", "Q2": "diarrhea", "Q6": "true", "Q3": "under_24h"},
+      "then": {
+        "diagnosis": "Podrażnienie układu pokarmowego lub poliuria po zjedzeniu soczystych owoców",
+        "action": "Odstaw owoce na 24 godziny, podawaj suchą mieszankę ziaren i obserwuj odchody"
+      }
+    },
+    {
+      "if": {"Q1": "turtle", "Q2": "shell_softening", "Q7": "young", "Q12": "no_uvb_light"},
+      "then": {
+        "diagnosis": "Metaboliczna choroba kości (MBD) i krzywica",
+        "action": "Zainstaluj lampę UVB w terrarium, włącz suplementację wapniem i skonsultuj się z weterynarzem gadów"
+      }
+    },
+    {
+      "if": {"Q1": "turtle", "Q2": "no_appetite", "Q4": "true", "Q12": "cold_drafty"},
+      "then": {
+        "diagnosis": "Spowolnienie metabolizmu ze względu na zbyt niską temperaturę lub zapalenie płuc",
+        "action": "Podnieś temperaturę na wyspie grzewczej do odpowiedniego poziomu i obserwuj oddech żółwia"
+      }
+    },
+    {
+      "if": {"Q1": "turtle", "Q2": "sneezing", "Q11": "swelling", "Q12": "no_uvb_light"},
+      "then": {
+        "diagnosis": "Hipowitaminoza A i infekcja dróg oddechowych (obrzęk powiek)",
+        "action": "Popraw warunki w terrarium, wdróż suplementację witaminą A i udaj się do weterynarza"
+      }
+    }
+  ]
+}   
